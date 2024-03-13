@@ -13,7 +13,8 @@ import * as schema from './src/drizzle/drizzle.schema'
   await client.connect();
   const db = drizzle(client, { schema })
   // This will run migrations on the database, skipping the ones already applied
-  await migrate(db, { migrationsFolder: './drizzle' });
+  await migrate(db, { migrationsFolder: './src/db/migrations' });
   // Don't forget to close the connection, otherwise the script will hang
+  console.log("migration sukses")
   await client.end()
 })()
