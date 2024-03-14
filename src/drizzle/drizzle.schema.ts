@@ -13,7 +13,7 @@ export const role = pgTable('role', {
   name: text('name'),
 });
 
-export const employee = pgTable('employee', {
+export const employeeSchema = pgTable('employee', {
   id: text('id').primaryKey(),
   name: text('name'),
   jobTitle: text('job_title'),
