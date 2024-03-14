@@ -56,3 +56,11 @@ export const dispute = pgTable('dispute', {
 //   deletedAt: timestamp('deleted_at').nullable(),
 //   isLate: boolean('is_late').default(false),
 // });
+
+export const roleEmployee = relations(employee, ({ one }) => ({
+  employee: one(role, {
+    fields: [employee.roleId],
+    references: [role.id], 
+  }),
+}));
+
