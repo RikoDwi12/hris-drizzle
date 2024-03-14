@@ -5,6 +5,12 @@ EXCEPTION
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
+ CREATE TYPE "employeee" AS ENUM('LAKI', 'PEREMPUAN', 'BANCI');
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
  CREATE TYPE "request_status" AS ENUM('APPROVE', 'PENDING', 'DISAPPROVE');
 EXCEPTION
  WHEN duplicate_object THEN null;
@@ -41,6 +47,7 @@ CREATE TABLE IF NOT EXISTS "employee" (
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
 	"deleted_at" timestamp,
+	"gender" "employeee",
 	"phone" text,
 	"role_id" text
 );

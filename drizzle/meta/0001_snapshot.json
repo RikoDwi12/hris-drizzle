@@ -1,6 +1,6 @@
 {
-  "id": "87c9b83a-24e7-4920-a620-c74de56fdde2",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "9d7f9081-bec8-4dff-ab83-1d66878ef229",
+  "prevId": "99200bd1-2390-487f-a919-842c13c46dea",
   "version": "5",
   "dialect": "pg",
   "tables": {
@@ -188,6 +188,14 @@
         "APPROVE": "APPROVE",
         "PENDING": "PENDING",
         "DISAPPROVE": "DISAPPROVE"
+      }
+    },
+    "employeee": {
+      "name": "employeee",
+      "values": {
+        "LAKI": "LAKI",
+        "PEREMPUAN": "PEREMPUAN",
+        "BANCI": "BANCI"
       }
     },
     "request_status": {

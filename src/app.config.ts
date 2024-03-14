@@ -4,7 +4,11 @@ import { z } from 'zod';
 
 const zEnvValidationSchema = z.object({
   APP_PORT: z.number({ coerce: true }).min(1000),
-  DATABASE_URL: z.string().url(),
+  DB_USERNAME: z.string(),
+  DB_PASSWORD: z.string(),
+  DB_HOST: z.string(),
+  DB_PORT: z.number({ coerce: true }),
+  DB_NAME: z.string()
 })
 
 export type IAppConfig = z.infer<typeof zEnvValidationSchema>

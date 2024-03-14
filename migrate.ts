@@ -4,16 +4,17 @@ import { migrate } from 'drizzle-orm/node-postgres/migrator'
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { Client } from 'pg';
 import * as schema from './src/drizzle/drizzle.schema'
+import { generateConnectionString } from 'src/utils';
 
 (async () => {
-
+  console.log(generateConnectionString())
   const client = new Client({
-    connectionString: process.env.DATABASE_URL,
+    connectionString: generateConnectionString()
   });
   await client.connect();
   const db = drizzle(client, { schema })
   // This will run migrations on the database, skipping the ones already applied
-  await migrate(db, { migrationsFolder: './src/db/migrations' });
+  await migrate(db, { migrationsFolder: './drizzle' });
   // Don't forget to close the connection, otherwise the script will hang
   console.log("migration sukses")
   await client.end()

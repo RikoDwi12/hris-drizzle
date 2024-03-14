@@ -2,6 +2,7 @@ import { InferInsertModel, InferSelectModel, relations } from 'drizzle-orm';
 import { boolean, integer, pgEnum, pgTable, primaryKey, serial, text, timestamp } from 'drizzle-orm/pg-core';
 
 export const rolesEnum = pgEnum('roles', ['ADMIN', 'USER']);
+export const genderEnum = pgEnum('employeee', ['LAKI', 'PEREMPUAN', 'BANCI'])
 export const disputeStatusEnum = pgEnum('dispute_status', ['APPROVE', 'PENDING', 'DISAPPROVE']);
 export const requestTypeEnum = pgEnum('request_type', ['SICK_LEAVE', 'ABSENCE']);
 export const requestStatusEnum = pgEnum('request_status', ['APPROVE', 'PENDING', 'DISAPPROVE']);
@@ -21,15 +22,16 @@ export const employee = pgTable('employee', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow(),
   deletedAt: timestamp('deleted_at'),
+  gender: genderEnum('gender'),
   phone: text('phone'),
-  roleId: text('role_id').references(()=>role.id)
+  roleId: text('role_id').references(() => role.id)
 });
 
 export const dispute = pgTable('dispute', {
   id: text('id').primaryKey(),
   title: text('title'),
   desc: text('desc'),
-  employeeId: text('employee_id').references(()=> employee.id),
+  employeeId: text('employee_id').references(() => employee.id),
   disputeStatus: disputeStatusEnum('dispute_status').default('PENDING'),
   createdAt: timestamp('created_at').notNull().defaultNow(),
   deletedAt: timestamp('deleted_at'),
