@@ -13,9 +13,18 @@ export class EmployeeService {
                 .select()
                 .from(schema.role)
                 .where(eq(schema.role.id,"1"))
-    console.log(data)
     return {
       data: data
     }
+  }
+
+  async getDetail() {
+    const result = await this.db.query.role.findMany({
+      columns : {
+        id : true
+      },
+      orderBy : (role, {asc})=> [asc(role.id)]
+    })
+    return result
   }
 }

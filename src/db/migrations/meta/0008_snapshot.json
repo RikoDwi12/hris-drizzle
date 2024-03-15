@@ -1,6 +1,6 @@
 {
-  "id": "87c9b83a-24e7-4920-a620-c74de56fdde2",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "54658dc9-808d-49d6-bbed-b7aac169aea0",
+  "prevId": "7740782c-54af-4bd1-8781-9dae71087948",
   "version": "5",
   "dialect": "pg",
   "tables": {
@@ -147,6 +147,86 @@
           "tableTo": "role",
           "columnsFrom": [
             "role_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "request": {
+      "name": "request",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "employee_id": {
+          "name": "employee_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "request_status": {
+          "name": "request_status",
+          "type": "request_status",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'PENDING'"
+        },
+        "request_type": {
+          "name": "request_type",
+          "type": "request_type",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "desc": {
+          "name": "desc",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "request_date": {
+          "name": "request_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "attachment": {
+          "name": "attachment",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "request_employee_id_employee_id_fk": {
+          "name": "request_employee_id_employee_id_fk",
+          "tableFrom": "request",
+          "tableTo": "employee",
+          "columnsFrom": [
+            "employee_id"
           ],
           "columnsTo": [
             "id"

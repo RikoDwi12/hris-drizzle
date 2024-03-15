@@ -11,4 +11,8 @@ export class EmployeeController {
   findAll() {
     return this.employeeService.getAll();
   }
+  @Get('bab')
+  getDetail() {
+    return this.employeeService.getDetail();
+  }
 }

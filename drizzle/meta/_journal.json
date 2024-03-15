@@ -15,6 +15,13 @@
       "when": 1710383575628,
       "tag": "0001_ambitious_invisible_woman",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1710471833739,
+      "tag": "0002_colossal_morgan_stark",
+      "breakpoints": true
     }
   ]
 }
